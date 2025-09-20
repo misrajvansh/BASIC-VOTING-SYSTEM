@@ -27,9 +27,12 @@ def view_winner():
     if not votes:
         print("No votes casted yet.\n")
         return
+        
+winners = []
+for name, count in votes.items():
+    if count == max_votes:
+        winners.append(name)
 
-    max_votes = max(votes.values())
-    winners = [name for name, count in votes.items() if count == max_votes]
 
     if len(winners) > 1:
         print(f"🤝 It's a tie between: {', '.join(winners)} with {max_votes} votes each\n")
